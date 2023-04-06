@@ -1,19 +1,25 @@
 from moviepy.editor import *
 
-input_video = "input/input.mp4"
-output_video = "output/output.mp4"
-watermark = "logo.png"
+def get_shutterstock_video(video_url):
+    # get video from Shutterstock using url
+    return "input/stock.mp4"
 
-video_clip = VideoFileClip(input_video).subclip(50,60)
-watermark_clip = ImageClip(watermark, duration=video_clip.duration)
+def create_video(audio_path, video_url):
+    video_path = get_shutterstock_video(video_url)
 
-audio = AudioFileClip("output/speech.mpeg")
+    output_video = "output/output.mp4"
+    watermark = "logo.png"
 
-# Set the audio of the video to the loaded audio file
-video_with_audio = video_clip.set_audio(audio)
+    video_clip = VideoFileClip(video_path)
+    #watermark_clip = ImageClip(watermark, duration=video_clip.duration)
 
-# Position the watermark at the bottom-right corner
-watermark_pos = ("right", "bottom")
+    audio = AudioFileClip(audio_path)
 
-final_clip = CompositeVideoClip([video_with_audio, watermark_clip.set_position(watermark_pos)])
-final_clip.write_videofile(output_video, codec="libx264", audio_codec="aac")
+    # Set the audio of the video to the loaded audio file
+    video_with_audio = video_clip.set_audio(audio)
+
+    # Position the watermark at the bottom-right corner
+    watermark_pos = ("right", "bottom")
+
+    #final_clip = CompositeVideoClip([video_with_audio, watermark_clip.set_position(watermark_pos)])
+    video_with_audio.write_videofile(output_video, codec="libx264", audio_codec="aac")

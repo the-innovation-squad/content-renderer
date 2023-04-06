@@ -1,6 +1,6 @@
 import requests
 
-def generate_voice_recording(api_key, input_script, output_file):
+def generate_voice_recording(api_key, input_script):
     tts_headers = {
         "Content-Type": "application/json",
         "xi-api-key": api_key
@@ -12,10 +12,11 @@ def generate_voice_recording(api_key, input_script, output_file):
     response = requests.post(
         tts_url, headers=tts_headers, json=formatted_message)
 
+    output_file = "output/speech.mpeg"
     if response.status_code == 200:
-        with open("output/speech.mpeg", "wb") as f:
+        with open(output_file, "wb") as f:
             f.write(response.content)
-        return True
+        return output_file
     else:
         print("Request failed with status code:", response.status_code)
         print("Response content:", response.content)
