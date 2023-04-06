@@ -1,6 +1,8 @@
 # Video Generator
-
 For a given script, this tool generates a video with the script being read by an AI generated voice.
+
+## Setup
+Copy the .env.sample file, rename to .env and fill in the values.
 
 ## Process:
 1. take a script
