@@ -1,25 +1,23 @@
 import requests
-import json
 
 def generate_voice_recording(api_key, input_script, output_file):
-    url = "https://api.elevenlabs.io/v1/synthesize"
-
-    headers = {
+    tts_headers = {
         "Content-Type": "application/json",
-        "Authorization": f"Bearer {api_key}"
+        "xi-api-key": api_key
     }
 
-    data = {
-        "text": input_script,
-        "voice": "en-US-Wavenet-A",  # Replace with the desired voice
-        "format": "mp3"
-    }
-
-    response = requests.post(url, headers=headers, data=json.dumps(data))
+    tts_url = "https://api.elevenlabs.io/v1/text-to-speech/{voice_id}".format(
+        voice_id="ErXwobaYiN019PkySvjV")
+    formatted_message = {"text": input_script}
+    response = requests.post(
+        tts_url, headers=tts_headers, json=formatted_message)
 
     if response.status_code == 200:
-        with open(output_file, 'wb') as f:
+        with open("output/speech.mpeg", "wb") as f:
             f.write(response.content)
-        print(f"Voice recording saved as {output_file}")
+        return True
     else:
-        print(f"Error: {response.status_code}, {response.text}")
+        print("Request failed with status code:", response.status_code)
+        print("Response content:", response.content)
+        return False
+    

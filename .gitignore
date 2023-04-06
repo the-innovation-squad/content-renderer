@@ -1,2 +1,5 @@
 # Env files
 .env
+output/
+venv/
+.DS_Store
