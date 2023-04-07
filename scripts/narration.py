@@ -1,9 +1,11 @@
 import requests
 import shutil
+from google.cloud import texttospeech
 from config import Config
 cfg = Config()
 
-def create_narration(input_script, output_path):
+def upscaled_narration(input_script, output_path):
+    output_path = output_path + "/narration.mpeg"
 
     if (cfg.debug):
         print("In DEBUG mode, skipping voice recording generation")
@@ -33,3 +35,31 @@ def create_narration(input_script, output_path):
         print("Request failed with status code:", response.status_code)
         print("Response content:", response.content)
         return False
+
+def create_narration(input_script, output_path):
+    if(cfg.upscale):
+        return upscaled_narration(input_script, output_path)
+    
+    output_path = output_path + "/narration.mp3"
+
+    # Google Cloud TTS
+    client = texttospeech.TextToSpeechClient()
+
+    synthesis_input = texttospeech.SynthesisInput(text=input_script)
+
+    voice = texttospeech.VoiceSelectionParams(
+        language_code="en-UK", ssml_gender=texttospeech.SsmlVoiceGender.NEUTRAL
+    )
+
+    audio_config = texttospeech.AudioConfig(
+        audio_encoding=texttospeech.AudioEncoding.MP3
+    )
+
+    response = client.synthesize_speech(
+        input=synthesis_input, voice=voice, audio_config=audio_config
+    )
+
+    with open(output_path, "wb") as out:
+        out.write(response.audio_content)
+
+    return output_path

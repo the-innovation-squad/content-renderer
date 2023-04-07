@@ -17,10 +17,12 @@ def clear_ouput_directory():
                 shutil.rmtree(item_path)
 
 def configure_args():
-    parser = argparse.ArgumentParser(description="Example of using flags in Python")
-    parser.add_argument("-d", "--debug", action="store_true", help="Enable the flag")
+    parser = argparse.ArgumentParser(description="Generate a video from a script.")
+    parser.add_argument("-d", "--debug", action="store_true", help="Enable debug mode")
+    parser.add_argument("-u", "--upscale", action="store_true", help="Use higher quality generation tools")
     args = parser.parse_args()
-    cfg.set_debug(args.debug)
+    cfg.update_from_args(args)
+    cfg.log_args()
 
 def main():
     configure_args()
