@@ -3,12 +3,17 @@ For a given script, this tool generates a video with the script being read by an
 
 ## Setup
 Copy the .env.sample file, rename to .env and fill in the values.
-`pip3 install -r requirements.txt`
+```bash
+pip3 install -r requirements.txt
+```
 
 ## Running
-Run
-`python3 scripts/main.py`
+```bash
+python3 scripts/main.py
+```
 
-## Process:
-1. take a script
-2. generate a video with the script being read by an AI generated voice
+### Debug Mode
+To skip the audio generation and use a pre-generated audio file, pass the `--debug` (`-d`) flag. This will save you some credits with Eleven Labs.
+```bash
+python3 scripts/main.py -d
+```
