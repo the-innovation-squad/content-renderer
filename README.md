@@ -18,8 +18,7 @@ timeline:
   - content: "That's it for our video. Thanks for watching and stay tuned for more content!"
     clip: "https://shorturl.at/bpxX9"
 ```
-
-[![Example Video](https://img.youtube.com/vi/aAoTrRiBZow/0.jpg)](https://www.youtube.com/watch?v=aAoTrRiBZow)
+https://user-images.githubusercontent.com/2746248/230537798-f37819a3-c6df-4a34-96e8-d0e3b7b67a94.mp4
 
 ## ⚙️ Setup and Installation
 
