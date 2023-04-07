@@ -19,7 +19,6 @@ def clear_ouput_directory():
 def configure_args():
     parser = argparse.ArgumentParser(description="Generate a video from a script.")
     parser.add_argument("-d", "--debug", action="store_true", help="Enable debug mode")
-    parser.add_argument("-u", "--upscale", action="store_true", help="Use higher quality generation tools")
     args = parser.parse_args()
     cfg.update_from_args(args)
     cfg.log_args()
