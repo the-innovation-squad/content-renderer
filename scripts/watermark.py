@@ -3,8 +3,8 @@ import requests
 import os
 import requests
 
-def add_watermark(input_video_path, output_video_path):
-    watermark_path = download_img("https://i.imgur.com/NbzMg2q.png")
+def add_watermark(input_video_path, watermark_url, output_video_path):
+    watermark_path = download_img(watermark_url)
     # Load the video clip
     clip = VideoFileClip(input_video_path)
 

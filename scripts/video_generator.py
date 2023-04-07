@@ -24,5 +24,6 @@ def generate():
     segment_paths = [os.path.join("output", str(index), "video_processed.mp4") for index, item in enumerate(video_script["timeline"])]
     concatenate_segments(segment_paths, "output/final.mp4")
 
-    # TODO: add watermark at the end if one is provided
-    add_watermark("output/final.mp4", "output/final.mp4")
+    watermark_url = video_script.get("watermark", False)
+    if watermark_url:
+        add_watermark("output/final.mp4", watermark_url, "output/final.mp4")
