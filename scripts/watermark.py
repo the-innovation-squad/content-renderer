@@ -22,6 +22,9 @@ def add_watermark(input_video_path, watermark_url, output_video_path):
     # Write the video clip to a file
     video_with_watermark.write_videofile(output_video_path)
 
+    # Add the original audio to the final output
+    video_with_watermark = video_with_watermark.set_audio(clip.audio)
+
     # Close the clips to free up memory
     clip.close()
     video_with_watermark.close()
@@ -36,6 +39,5 @@ def download_img(url):
             file.write(response.content)
         return os.path.abspath(filename)
     else:
-        print(
-            f"Failed to download the image, status code: {response.status_code}")
-        return None
+        print(f"Failed to download the image, status code: {response.status_code}")
+        raise Exception(f"Failed to download the image, status code: {response.status_code}")
