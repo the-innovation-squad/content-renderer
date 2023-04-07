@@ -1,6 +1,7 @@
 # Env files
 .env
 venv/
+google_credentials.json
 
 # Inputs / Outputs
 input/*

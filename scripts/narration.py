@@ -5,7 +5,7 @@ from tts_engines.google_tts import narrate as narrate_google
 from tts_engines.eleven_labs import narrate as narrate_eleven
 
 def create_narration(input_script, options, output_path):
-    engine = options["engine"] or "google"
+    engine = options["engine"]
     if engine == "google":
         return narrate_google(input_script, output_path)
     elif engine == "eleven":

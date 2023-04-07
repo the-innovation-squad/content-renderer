@@ -11,8 +11,10 @@ def generate():
     # Iterate through the timeline of content items and stock video clips to create video segments
     for index, item in enumerate(video_script["timeline"]):
         content = item["content"]
-        options = item["options"]
         clip = item["clip"]
+        options = {
+            "engine": item.get("engine", "google")
+        }
 
         output_dir = "output/" + str(index)
         os.mkdir(output_dir)
