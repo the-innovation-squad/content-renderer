@@ -22,7 +22,6 @@ def narrate(input_script, output_dir):
             f.write(response.content)
         return output_path
     else:
-        # TODO: tidy this error handling, why return a boolean, let's error
         print("Request failed with status code:", response.status_code)
         print("Response content:", response.content)
-        return False
+        raise Exception("Eleven Labs TTS Generation Failed: " + response.content)

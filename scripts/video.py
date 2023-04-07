@@ -9,8 +9,8 @@ def download_video(video_url, ouput_path):
             for chunk in response.iter_content(chunk_size=8192):
                 file.write(chunk)
     else:
-        # TODO: throw error here or use placeholder clip
         print(f"Request failed with status code: {response.status_code}")
+        raise Exception(f"Request failed with status code: {response.status_code}")
 
 def create_segment(audio_path, video_url, output_dir):
     output_path = output_dir + "/video.mp4"
