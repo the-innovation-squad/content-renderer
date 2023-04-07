@@ -2,7 +2,9 @@
 .env
 venv/
 
-
+# Inputs / Outputs
+input/*
+output/*
 
 # System Files
 .DS_Store
