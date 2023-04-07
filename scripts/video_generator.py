@@ -29,4 +29,7 @@ def generate():
 
     watermark_url = video_script.get("watermark", False)
     if watermark_url:
-        add_watermark("output/final.mp4", watermark_url, "output/final.mp4")
+        add_watermark("output/final.mp4", watermark_url, "output/watermarked.mp4")
+        os.rename("output/final.mp4", "output/compiled.mp4")
+        os.rename("output/watermarked.mp4", "output/final.mp4")
+
