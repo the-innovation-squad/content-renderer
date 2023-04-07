@@ -1,8 +1,6 @@
 from moviepy.editor import *
 import requests
 import os
-import requests
-
 
 def add_watermark(input_video_path, watermark_url, output_video_path):
     watermark_path = download_img(watermark_url)
