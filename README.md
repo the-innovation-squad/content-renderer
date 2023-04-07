@@ -36,6 +36,12 @@ https://user-images.githubusercontent.com/2746248/230598446-d7470b44-a7a5-4cac-b
 	pip3 install -r requirements.txt
 	```
 
+4. If you are on macOS, you may need to install the ffmpeg library:
+	```bash
+	brew install ffmpeg
+	```
+	If you don't have Homebrew installed, you can follow the installation instructions on their website: https://brew.sh/.
+
 ## 🚀 Running the App
 
 1. To run the app, simply execute the following command:
