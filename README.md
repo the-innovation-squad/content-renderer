@@ -2,7 +2,9 @@
 
 _Please enjoy our GPT-4 written README! 🤖_
 
-This tool generates a video with a given script being read by an AI-generated voice. The script and corresponding video clips are defined in a YAML file. The project uses the Eleven Labs API to generate the voice narration and MoviePy for video editing.
+This tool is designed for rendering videos with a given script and corresponding video clips. It combines the script being read by an AI-generated voice with the provided video clips to create a final video. Please note that this application does not source content or footage; it only renders videos based on the input provided. The content and footage should be prepared separately and provided through the input YAML file.
+
+The project uses the Eleven Labs API to generate the voice narration and MoviePy for video editing.
 
 ## ⚙️ Setup and Installation
 
@@ -50,11 +52,11 @@ python3 scripts/main.py -d
 ## 📖 How the App Works
 The app works in the following steps:
 
-1. Read the input script and stock video clips from the input/video_script.yml file.
+1. Read the input script and video clips from the input/video_script.yml file.
 
 2. Generate the voice narration using the Eleven Labs API or use a pre-generated audio file in debug mode.
 
-3. Create video segments for each timeline item in the input script, combining the stock video clips with the generated voice narration.
+3. Create video segments for each timeline item in the input script, combining the video clips with the generated voice narration.
 
 4. Concatenate the video segments together to produce the final video.
 
