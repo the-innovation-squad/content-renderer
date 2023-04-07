@@ -1,6 +1,3 @@
-import shutil
-from config import Config
-cfg = Config()
 from tts_engines.google_tts import narrate as narrate_google
 from tts_engines.eleven_labs import narrate as narrate_eleven
 
