@@ -11,14 +11,15 @@ title: Simple Video Example
 watermark: "https://i.imgur.com/NbzMg2q.png" # Optional
 timeline:
   - content: "Welcome to our video! This is the first scene with an AI-generated voice."
-    engine: "eleven" # One of ["eleven", "google"]. Default is "google"
     clip: "https://www.pexels.com/download/video/6394054/"
   - content: "Now, we're moving to the second scene. Enjoy the visuals!"
     clip: "https://www.pexels.com/download/video/2034291/"
+    engine: "eleven" # One of ["eleven", "google"]. Default is "google"
   - content: "That's it for our video. Thanks for watching and stay tuned for more content!"
     clip: "https://www.pexels.com/download/video/3150358/?fps=25.0&h=1080&w=2048"
 ```
-https://user-images.githubusercontent.com/2746248/230537798-f37819a3-c6df-4a34-96e8-d0e3b7b67a94.mp4
+https://user-images.githubusercontent.com/2746248/230595237-babef763-4dcf-4de0-95bb-fc0461f5c91e.mp4
+
 
 ## ⚙️ Setup and Installation
 
