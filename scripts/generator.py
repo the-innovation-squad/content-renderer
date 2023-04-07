@@ -1,9 +1,9 @@
 import yaml
-from voice import generate_voice_recording
 from video import create_video
+from voice import generate_voice_recording
 
 # Main function to parse the YAML file and call the create_content and create_video functions
-def parse():
+def generate():
     # Read the YAML file
     with open('input/video_script.yml', 'r') as file:
         video_script = yaml.safe_load(file)

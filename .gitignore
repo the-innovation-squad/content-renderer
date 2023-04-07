@@ -8,3 +8,6 @@ output/*
 
 # System Files
 .DS_Store
+
+# Python Files
+__pycache__/

@@ -27,3 +27,6 @@ class Config(metaclass=Singleton):
     def __init__(self):
         self.debug = False
         self.elevenlabs_api_key = os.getenv("ELEVENLABS_API_KEY")
+
+    def set_debug(self, debug):
+        self.debug = debug
