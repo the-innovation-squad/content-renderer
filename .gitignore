@@ -1,6 +1,8 @@
 # Env files
 .env
-output/
-input/
 venv/
+
+
+
+# System Files
 .DS_Store
