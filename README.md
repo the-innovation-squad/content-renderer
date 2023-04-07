@@ -50,15 +50,15 @@ python3 scripts/main.py -d
 ## 📖 How the App Works
 The app works in the following steps:
 
-Read the input script and stock video clips from the input/video_script.yml file.
+1. Read the input script and stock video clips from the input/video_script.yml file.
 
-Generate the voice narration using the Eleven Labs API or use a pre-generated audio file in debug mode.
+2. Generate the voice narration using the Eleven Labs API or use a pre-generated audio file in debug mode.
 
-Create video segments for each timeline item in the input script, combining the stock video clips with the generated voice narration.
+3. Create video segments for each timeline item in the input script, combining the stock video clips with the generated voice narration.
 
-Concatenate the video segments together to produce the final video.
+4. Concatenate the video segments together to produce the final video.
 
-Save the final video in the output directory.
+5. Save the final video in the output directory.
 
 
 Feel free to modify and enhance the README to better suit your project's needs.
