@@ -6,6 +6,19 @@ This tool is designed for rendering videos with a given script and corresponding
 
 The project uses the Eleven Labs API to generate the voice narration and MoviePy for video editing.
 
+## 📜 Example Script
+Here is a simple example script that can be passed as an input to the app:
+```yaml
+title: Simple Video Example
+timeline:
+  - content: "Welcome to our video! This is the first scene with an AI-generated voice."
+    clip: "https://shorturl.at/oqJN3"
+  - content: "Now, we're moving to the second scene. Enjoy the visuals!"
+    clip: "https://shorturl.at/kmBQ6"
+  - content: "That's it for our video. Thanks for watching and stay tuned for more content!"
+    clip: "https://shorturl.at/bpxX9"
+```
+
 ## ⚙️ Setup and Installation
 
 1. Clone the repository to your local machine.
