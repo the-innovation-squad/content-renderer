@@ -11,13 +11,14 @@ def generate():
     # Iterate through the timeline of content items and stock video clips to create video segments
     for index, item in enumerate(video_script["timeline"]):
         content = item["content"]
+        options = item["options"]
         clip = item["clip"]
 
-        output_path = "output/" + str(index)
-        os.mkdir(output_path)
-        
-        audio = create_narration(content, output_path)
-        create_segment(audio, clip, output_path)
+        output_dir = "output/" + str(index)
+        os.mkdir(output_dir)
+
+        audio_path = create_narration(content, options, output_dir)
+        create_segment(audio_path, clip, output_dir)
 
     # Stitch the video segments together
     segment_paths = [os.path.join("output", str(index), "video_processed.mp4") for index, item in enumerate(video_script["timeline"])]

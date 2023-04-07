@@ -10,6 +10,8 @@ Here is a simple example script that can be passed as an input to the app:
 title: Simple Video Example
 timeline:
   - content: "Welcome to our video! This is the first scene with an AI-generated voice."
+    options:
+      engine: "eleven"
     clip: "https://www.pexels.com/download/video/6394054/"
   - content: "Now, we're moving to the second scene. Enjoy the visuals!"
     clip: "https://www.pexels.com/download/video/2034291/"
