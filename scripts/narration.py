@@ -1,10 +1,15 @@
 import requests
+import shutil
 from config import Config
 cfg = Config()
 
-def generate_voice_recording(input_script):
+def create_narration(input_script, output_path):
+
     if (cfg.debug):
         print("In DEBUG mode, skipping voice recording generation")
+        source_file = "lib/voice-sample.mpeg"
+        destination_file = output_path
+        shutil.copy2(source_file, destination_file)
         return "lib/voice-sample.mpeg"
 
     tts_headers = {
@@ -19,11 +24,10 @@ def generate_voice_recording(input_script):
     response = requests.post(
         tts_url, headers=tts_headers, json=formatted_message)
 
-    output_file = "output/content.mpeg"
     if response.status_code == 200:
-        with open(output_file, "wb") as f:
+        with open(output_path, "wb") as f:
             f.write(response.content)
-        return output_file
+        return output_path
     else:
         # TODO: tidy this error handling, why return a boolean?
         print("Request failed with status code:", response.status_code)

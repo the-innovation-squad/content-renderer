@@ -4,10 +4,10 @@ def get_shutterstock_video(video_url):
     # get video from Shutterstock using url
     return "input/stock.mp4"
 
-def create_video(audio_path, video_url):
+def create_video(audio_path, video_url, ouput_path):
     video_path = get_shutterstock_video(video_url)
 
-    output_video = "output/output.mp4"
+    output_video = ouput_path
     watermark = "logo.png"
 
     video_clip = VideoFileClip(video_path)
