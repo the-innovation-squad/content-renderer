@@ -13,12 +13,11 @@ def generate():
         content = item["content"]
         clip = item["clip"]
 
-        os.mkdir("output/" + str(index))
-        narration_output_file = "output/" + str(index) + "/narration.mpeg"
-        video_output_file = "output/" + str(index) + "/video.mp4"
-
-        audio = create_narration(content, narration_output_file)
-        create_segment(audio, clip, video_output_file)
+        output_path = "output/" + str(index)
+        os.mkdir(output_path)
+        
+        audio = create_narration(content, output_path)
+        create_segment(audio, clip, output_path)
 
     # Stitch the video segments together
     segment_paths = [os.path.join("output", str(index), "video_processed.mp4") for index, item in enumerate(video_script["timeline"])]

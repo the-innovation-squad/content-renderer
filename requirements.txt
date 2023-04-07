@@ -1,2 +1,3 @@
 moviepy==1.0.3
 python_dotenv==1.0.0
+google_cloud_texttospeech==2.14.1

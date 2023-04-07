@@ -13,6 +13,7 @@ def download_video(video_url, ouput_path):
         print(f"Request failed with status code: {response.status_code}")
 
 def create_segment(audio_path, video_url, output_path):
+    output_path = output_path + "/video.mp4"
     download_video(video_url, output_path)
 
     video_clip = VideoFileClip(output_path)
@@ -43,8 +44,8 @@ def preprocess_video_clip(video_path, target_resolution, target_fps):
     return resized_clip
 
 def concatenate_segments(segment_paths, output_path):
-    target_resolution = (1920, 1080) # Adjust this to your desired resolution
-    target_fps = 30 # Adjust this to your desired frame rate
+    target_resolution = (1920, 1080)  # Adjust this to your desired resolution
+    target_fps = 30  # Adjust this to your desired frame rate
 
     processed_clips = [preprocess_video_clip(clip_path, target_resolution, target_fps) for clip_path in segment_paths]
     final_clip = concatenate_videoclips(processed_clips)
