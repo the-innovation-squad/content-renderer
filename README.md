@@ -1,6 +1,4 @@
-# Video Generator 🎥
-
-_Please enjoy our GPT-4 written README! 🤖_
+# 🎥 Video Generator
 
 This tool is designed for rendering videos with a given script and corresponding video clips. It combines the script being read by an AI-generated voice with the provided video clips to create a final video. Please note that this application does not source content or footage; it only renders videos based on the input provided. The content and footage should be prepared separately and provided through the input YAML file.
 
