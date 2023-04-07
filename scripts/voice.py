@@ -1,9 +1,11 @@
 import requests
+from config import Config
+cfg = Config()
 
-def generate_voice_recording(api_key, input_script):
+def generate_voice_recording(input_script):
     tts_headers = {
         "Content-Type": "application/json",
-        "xi-api-key": api_key
+        "xi-api-key": cfg.elevenlabs_api_key
     }
 
     tts_url = "https://api.elevenlabs.io/v1/text-to-speech/{voice_id}".format(
