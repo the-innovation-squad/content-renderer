@@ -54,11 +54,17 @@ Run the app using the command provided in the "Running the App" section.
 
 ## 🔧 Available Arguments
 
-### Debug Mode
-To skip the audio generation and use a pre-generated audio file, pass the --debug (-d) flag. This will save you some credits with Eleven Labs.
+| Short | Long      | Description                             | Type          |
+|-------|-----------|-----------------------------------------|---------------|
+| `-d`  | `--debug` | Enable debug mode                       | Flag (boolean)|
+| `-u`  | `--upscale`| Use higher quality generation tools    | Flag (boolean)|
+
+### Usage
+
+To run the script with command-line arguments, use the following format:
 
 ```bash
-python3 scripts/main.py -d
+python scripts/main.py [-d] [-u]
 ```
 
 ## 📖 How the App Works
