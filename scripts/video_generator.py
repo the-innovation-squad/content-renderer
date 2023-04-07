@@ -21,7 +21,10 @@ def generate():
         os.mkdir(output_dir)
 
         audio_path = create_narration(content, options, output_dir)
-        create_segment(audio_path, clip, output_dir)
+
+        is_captioning_enabled = video_script.get("captions", False)
+
+        create_segment(audio_path, clip, content, is_captioning_enabled, output_dir)
 
     # Stitch the video segments together
     segment_paths = [os.path.join("output", str(index), "video_processed.mp4") for index, item in enumerate(video_script["timeline"])]

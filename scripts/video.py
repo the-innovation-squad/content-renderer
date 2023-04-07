@@ -1,5 +1,6 @@
 from moviepy.editor import *
 import requests
+from captions import add_captions
 
 def download_video(video_url, ouput_path):
     response = requests.get(video_url, stream=True)
@@ -12,7 +13,7 @@ def download_video(video_url, ouput_path):
         print(f"Request failed with status code: {response.status_code}")
         raise Exception(f"Request failed with status code: {response.status_code}")
 
-def create_segment(audio_path, video_url, output_dir):
+def create_segment(audio_path, video_url, content, is_captioning_enabled, output_dir):
     output_path = output_dir + "/video.mp4"
     download_video(video_url, output_path)
 
@@ -31,8 +32,10 @@ def create_segment(audio_path, video_url, output_dir):
     # Set the audio of the looped video to the loaded audio file
     video_with_audio = looped_video_clip.set_audio(audio)
 
+    video = add_captions(video_with_audio, content, is_captioning_enabled)
+
     # Trim the video to match the audio duration
-    final_video = video_with_audio.set_duration(audio.duration)
+    final_video = video.set_duration(audio.duration)
 
     output_path_processed = output_path.replace(".mp4", "_processed.mp4")
     final_video.write_videofile(output_path_processed, codec="libx264", audio_codec="aac")
