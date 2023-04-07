@@ -11,7 +11,7 @@ def add_watermark(input_video_path, output_video_path):
     # Load the watermark image
     watermark = ImageClip(watermark_path)
 
-    watermark = watermark.set_duration(clip.duration)
+    watermark = watermark.set_duration(clip.duration).resize(width=100)
 
     # Define the position of the watermark
     position = (clip.w - watermark.w - 10, clip.h - watermark.h - 10)
