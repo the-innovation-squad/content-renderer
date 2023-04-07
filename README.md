@@ -10,8 +10,7 @@ Here is a simple example script that can be passed as an input to the app:
 title: Simple Video Example
 timeline:
   - content: "Welcome to our video! This is the first scene with an AI-generated voice."
-    options:
-      engine: "eleven"
+    engine: "eleven" # One of ["eleven", "google"]. Default is "google"
     clip: "https://www.pexels.com/download/video/6394054/"
   - content: "Now, we're moving to the second scene. Enjoy the visuals!"
     clip: "https://www.pexels.com/download/video/2034291/"
@@ -56,17 +55,16 @@ Run the app using the command provided in the "Running the App" section.
 
 ## 🔧 Available Arguments
 
-| Short | Long      | Description                             | Type          |
-|-------|-----------|-----------------------------------------|---------------|
-| `-d`  | `--debug` | Enable debug mode                       | Flag (boolean)|
-| `-u`  | `--upscale`| Use higher quality generation tools    | Flag (boolean)|
+| Short | Long      | Description                                | Type           |
+|-------|-----------|--------------------------------------------|----------------|
+| `-d`  | `--debug` | Enable debug mode, and skip tts generation | Flag (boolean) |
 
 ### Usage
 
 To run the script with command-line arguments, use the following format:
 
 ```bash
-python scripts/main.py [-d] [-u]
+python scripts/main.py [-d]
 ```
 
 ## 📖 How the App Works
