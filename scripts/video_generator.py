@@ -2,6 +2,7 @@ import os
 import yaml
 from video import create_segment, concatenate_segments
 from narration import create_narration
+from watermark import add_watermark
 
 def generate():
     # Read the YAML file
@@ -24,4 +25,4 @@ def generate():
     concatenate_segments(segment_paths, "output/final.mp4")
 
     # TODO: add watermark at the end if one is provided
-
+    add_watermark("output/final.mp4", "output/final.mp4")
