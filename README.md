@@ -9,6 +9,7 @@ Here is a simple example script that can be passed as an input to the app:
 ```yaml
 title: Simple Video Example
 watermark: "https://i.imgur.com/NbzMg2q.png" # Optional
+captions: True # Optional
 timeline:
   - content: "Welcome to our video! This is the first scene with an AI-generated voice."
     clip: "https://www.pexels.com/download/video/6394054/"
