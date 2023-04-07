@@ -24,7 +24,7 @@ def create_segment(audio_path, video_url, ouput_path):
     #final_clip = CompositeVideoClip([video_with_audio, watermark_clip.set_position(watermark_pos)])
     video_with_audio.write_videofile(output_video, codec="libx264", audio_codec="aac")
 
-def concatenate_segments(segment_paths):
+def concatenate_segments(segment_paths, output_path):
     # Concatenate the video segments together
-    final_clip = concatenate_videoclips([VideoFileClip(m).subclip(0, 10) for m in segment_paths])
-    final_clip.write_videofile("output/final.mp4", codec="libx264", audio_codec="aac")
+    final_clip = concatenate_videoclips([VideoFileClip(clip) for clip in segment_paths])
+    final_clip.write_videofile(output_path, codec="libx264", audio_codec="aac")
