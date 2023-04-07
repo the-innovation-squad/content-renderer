@@ -34,7 +34,7 @@ def download_img(url):
     response = requests.get(url)
 
     if response.status_code == 200:
-        filename = "watermark.png"
+        filename = "output/watermark.png"
         with open(filename, "wb") as file:
             file.write(response.content)
         return os.path.abspath(filename)
