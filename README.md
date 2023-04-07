@@ -19,6 +19,8 @@ timeline:
     clip: "https://shorturl.at/bpxX9"
 ```
 
+[![Example Video](https://img.youtube.com/vi/aAoTrRiBZow/0.jpg)](https://www.youtube.com/watch?v=aAoTrRiBZow)
+
 ## ⚙️ Setup and Installation
 
 1. Clone the repository to your local machine.
