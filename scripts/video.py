@@ -1,6 +1,7 @@
 from moviepy.editor import *
 import requests
-from captions import add_captions
+from video_tools.watermark import add_watermark
+from video_tools.captions import add_captions
 
 def download_video(video_url, ouput_path):
     response = requests.get(video_url, stream=True)
@@ -13,7 +14,7 @@ def download_video(video_url, ouput_path):
         print(f"Request failed with status code: {response.status_code}")
         raise Exception(f"Request failed with status code: {response.status_code}")
 
-def create_segment(audio_path, video_url, content, is_captioning_enabled, output_dir):
+def create_segment(audio_path, video_url, content, video_options, output_dir):
     output_path = output_dir + "/video.mp4"
     download_video(video_url, output_path)
 
@@ -30,13 +31,18 @@ def create_segment(audio_path, video_url, content, is_captioning_enabled, output
     looped_video_clip = concatenate_videoclips(video_clips)
 
     # Set the audio of the looped video to the loaded audio file
-    video_with_audio = looped_video_clip.set_audio(audio)
-
-    video = add_captions(video_with_audio, content, is_captioning_enabled)
+    looped_video_clip_with_audio = looped_video_clip.set_audio(audio)
 
     # Trim the video to match the audio duration
-    final_video = video.set_duration(audio.duration)
+    final_video = looped_video_clip_with_audio.set_duration(audio.duration)
 
+    # Add optional extras
+    if video_options["watermark_url"]:
+        final_video = add_watermark(final_video, video_options["watermark_url"])
+    if video_options["captions"]:
+        final_video = add_captions(final_video, content)
+
+    # Write the final video to disk and return the path
     output_path_processed = output_path.replace(".mp4", "_processed.mp4")
     final_video.write_videofile(output_path_processed, codec="libx264", audio_codec="aac")
     return output_path_processed
@@ -47,8 +53,8 @@ def preprocess_video_clip(video_path, target_resolution, target_fps):
     return resized_clip
 
 def concatenate_segments(segment_paths, output_path):
-    target_resolution = (1920, 1080)  # Adjust this to your desired resolution
-    target_fps = 30  # Adjust this to your desired frame rate
+    target_resolution = (1920, 1080) # Adjust this to your desired resolution
+    target_fps = 30 # Adjust this to your desired frame rate
 
     processed_clips = [preprocess_video_clip(clip_path, target_resolution, target_fps) for clip_path in segment_paths]
     final_clip = concatenate_videoclips(processed_clips)

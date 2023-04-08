@@ -2,7 +2,6 @@ import os
 import yaml
 from video import create_segment, concatenate_segments
 from narration import create_narration
-from watermark import add_watermark
 
 def generate():
     # Read the YAML file
@@ -12,27 +11,22 @@ def generate():
     # Iterate through the timeline of content items and stock video clips to create video segments
     for index, item in enumerate(video_script["timeline"]):
         content = item["content"]
-        clip = item["clip"]
-        options = {
+        clip_url = item["clip"]
+
+        narration_options = {
             "engine": item.get("engine", "google")
+        }
+        video_options = {
+            "captions": video_script.get("captions", False),
+            "watermark_url": video_script.get("watermark", False)
         }
 
         output_dir = "output/" + str(index)
         os.mkdir(output_dir)
 
-        audio_path = create_narration(content, options, output_dir)
-
-        is_captioning_enabled = video_script.get("captions", False)
-
-        create_segment(audio_path, clip, content, is_captioning_enabled, output_dir)
+        audio_file_path = create_narration(content, narration_options, output_dir)
+        create_segment(audio_file_path, clip_url, content, video_options, output_dir)
 
     # Stitch the video segments together
     segment_paths = [os.path.join("output", str(index), "video_processed.mp4") for index, item in enumerate(video_script["timeline"])]
     concatenate_segments(segment_paths, "output/final.mp4")
-
-    watermark_url = video_script.get("watermark", False)
-    if watermark_url:
-        add_watermark("output/final.mp4", watermark_url, "output/watermarked.mp4")
-        os.rename("output/final.mp4", "output/compiled.mp4")
-        os.rename("output/watermarked.mp4", "output/final.mp4")
-
