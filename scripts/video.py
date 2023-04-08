@@ -1,4 +1,4 @@
-from moviepy.editor import *
+from moviepy.editor import VideoFileClip, AudioFileClip, concatenate_videoclips
 import requests
 from video_tools.watermark import add_watermark
 from video_tools.captions import add_captions

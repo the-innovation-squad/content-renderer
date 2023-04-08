@@ -1,4 +1,4 @@
-from moviepy.editor import *
+from moviepy.editor import TextClip, CompositeVideoClip
 
 def add_captions(video, subtitle_text):
     captions = TextClip(subtitle_text, fontsize=48, color="white", font="Comic-Sans-MS-Bold")
