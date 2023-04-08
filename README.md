@@ -36,11 +36,12 @@ https://user-images.githubusercontent.com/2746248/230598446-d7470b44-a7a5-4cac-b
 	pip3 install -r requirements.txt
 	```
 
-4. If you are on macOS, you may need to install the ffmpeg library:
+4. If you are on macOS, you may need to install the ffmpeg and imagemagick libraries:
+	_If you don't have Homebrew installed, you can follow the installation instructions on their website: https://brew.sh/._
 	```bash
-	brew install ffmpeg
+	brew install ffmpeg # required for MoviePy to work
+	brew install imagemagick # required for MoviePy to support captions
 	```
-	If you don't have Homebrew installed, you can follow the installation instructions on their website: https://brew.sh/.
 
 ## 🚀 Running the App
 
