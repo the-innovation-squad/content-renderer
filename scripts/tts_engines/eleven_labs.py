@@ -17,7 +17,8 @@ def narrate(input_script, output_dir):
     # TODO: fix issue where we seem to need to clip off script at 333 characters
     formatted_message = {"text": input_script[:333]}
     response = requests.post(
-        tts_url, headers=tts_headers, json=formatted_message)
+        tts_url, headers=tts_headers, json=formatted_message
+    )
 
     if response.status_code == 200:
         with open(output_path, "wb") as f:
