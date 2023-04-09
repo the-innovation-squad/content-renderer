@@ -43,6 +43,10 @@ https://user-images.githubusercontent.com/2746248/230598446-d7470b44-a7a5-4cac-b
 	brew install imagemagick # required for MoviePy to support captions
 	```
 
+### Environment Variables
+- `ELEVEN_LABS_API_KEY`: API key for the Eleven Labs API. You can get one by signing up for a free account at https://eleven-labs.com/.
+- `GOOGLE_APPLICATION_CREDENTIALS`: Path to the Google Cloud Platform service account credentials JSON file. You can get one by following the instructions at https://cloud.google.com/text-to-speech/docs/quickstart-client-libraries#client-libraries-install-python.
+
 ## 🚀 Running the App
 
 1. To run the app, simply execute the following command:
