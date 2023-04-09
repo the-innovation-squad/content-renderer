@@ -51,18 +51,6 @@ https://user-images.githubusercontent.com/2746248/230598446-d7470b44-a7a5-4cac-b
 	```
 	This will create a video based on the input script and stock video clips provided in the input/video_script.yml file. The final video will be saved in the output directory.
 
-## 🔰 Instructions for Beginners
-
-If you are new to Python and command-line applications, follow these steps:
-
-Install Python 3 from the [official Python website](https://www.python.org/downloads/).
-
-Open a terminal (Command Prompt on Windows, Terminal on macOS/Linux) and navigate to the project directory using the cd command.
-
-Follow the setup and installation instructions above.
-
-Run the app using the command provided in the "Running the App" section.
-
 ## 🔧 Available Arguments
 
 | Short | Long      | Description                                | Type           |
