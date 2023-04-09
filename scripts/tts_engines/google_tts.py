@@ -7,8 +7,8 @@ def narrate(input_script, output_dir):
 
     synthesis_input = texttospeech.SynthesisInput(text=input_script)
 
+    # TODO: extract below settings and expose in script yaml
     voice = texttospeech.VoiceSelectionParams(
-        # TODO: extract below settings and expose in script yaml
         language_code="en-UK", ssml_gender=texttospeech.SsmlVoiceGender.NEUTRAL
     )
 
