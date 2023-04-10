@@ -34,7 +34,7 @@ def generate():
     global_engine = video_script.get("engine", "google")
     global_engine_settings = video_script.get("engine_settings", {})
 
-    # Iterate through the timeline of content items and stock video clips to create video segments
+    print("> Processing scenes concurrently...")
     with ThreadPoolExecutor() as executor:
         executor.map(
             process_scene,
