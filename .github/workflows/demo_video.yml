@@ -1,0 +1,53 @@
+name: Generate Video
+
+on:
+  pull_request:
+    types: [opened, synchronize]
+
+permissions:
+  pull-requests: write
+  issues: write
+
+jobs:
+  generate_video:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: "3.x"
+
+      - name: Move video_script.yml to input directory
+        run: mv ./lib/video_script.yml input/
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Generate video
+        run: python scripts/main.py -d
+
+      - name: Show summary
+        run: |
+          echo "### Sample Video 📺 Created with script 📜: " >> $GITHUB_STEP_SUMMARY
+          echo '```' >> $GITHUB_STEP_SUMMARY
+          cat input/sample_script.yml >> $GITHUB_STEP_SUMMARY
+          echo '```' >> $GITHUB_STEP_SUMMARY
+        shell: bash
+
+      - name: Upload video artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: final-video
+          path: output/final.mp4
+
+      - name: Post comment on pull request
+        uses: unsplash/comment-on-pr@v1.3.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          check_for_duplicate_msg: false
+          msg: |
+            Video generated. [Download here](https://github.com/${{ github.repository }}/actions/artifacts/${{ github.run_id }}/download).
