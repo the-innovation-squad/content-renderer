@@ -35,4 +35,4 @@ def generate():
     print("> Concatenating video segments...")
     segment_paths = [os.path.join("output", str(index), "video_processed.mp4") for index, item in enumerate(video_script["timeline"])]
     concatenate_segments(segment_paths, "output/final.mp4")
-    print("> Done")
+    print("> Done.")
