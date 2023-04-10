@@ -10,11 +10,11 @@ def create_narration(input_script, options, output_dir):
         output_path = output_dir + "/narration.mpeg"
         shutil.copy("lib/voice-sample.mpeg", output_path)
 
-
     engine = options["engine"]
+    settings = options["engine_settings"]
     if engine == "google":
-        return narrate_google(input_script, output_dir)
+        return narrate_google(input_script, output_dir, settings)
     elif engine == "eleven":
-        return narrate_eleven(input_script, output_dir)
+        return narrate_eleven(input_script, output_dir, settings)
     else:
         raise Exception("Unknown engine: " + engine)

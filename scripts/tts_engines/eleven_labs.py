@@ -2,16 +2,13 @@ import requests
 from config import Config
 cfg = Config()
 
-def narrate(input_script, output_dir):
-    output_path = output_dir + "/narration.mpeg"
+def narrate(input_script, output_dir, settings):
+    voice_id = settings.get("voice_id", "TxGEqnHWrfWFTfGW9XjX")
 
     tts_headers = {
         "Content-Type": "application/json",
         "xi-api-key": cfg.elevenlabs_api_key
     }
-
-    # TODO: extract below settings and expose in script yaml
-    voice_id = "ErXwobaYiN019PkySvjV"
     tts_url = f"https://api.elevenlabs.io/v1/text-to-speech/{voice_id}"
 
     # TODO: fix issue where we seem to need to clip off script at 333 characters
@@ -21,6 +18,7 @@ def narrate(input_script, output_dir):
     )
 
     if response.status_code == 200:
+        output_path = output_dir + "/narration.mpeg"
         with open(output_path, "wb") as f:
             f.write(response.content)
         return output_path
