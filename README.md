@@ -30,7 +30,7 @@ timeline:
 ```
 
 ## 🖨️ Example Output
-https://user-images.githubusercontent.com/2746248/230905067-5548e1e3-aac4-45b2-a281-4a6aee9d0458.mp4
+https://user-images.githubusercontent.com/2746248/231005250-db406585-c417-4475-b47e-e7cfcc2314a1.mp4
 
 ## ⚙️ Setup and Installation
 
@@ -70,14 +70,6 @@ https://user-images.githubusercontent.com/2746248/230905067-5548e1e3-aac4-45b2-a
 | Short | Long      | Description                                | Type           |
 |-------|-----------|--------------------------------------------|----------------|
 | `-d`  | `--debug` | Enable debug mode, and skip tts generation | Flag (boolean) |
-
-### Usage
-
-To run the script with command-line arguments, use the following format:
-
-```bash
-python scripts/main.py [-d]
-```
 
 ## 📖 How the App Works
 The app works in the following steps:
