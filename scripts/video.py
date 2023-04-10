@@ -35,6 +35,7 @@ def create_segment(audio_path, video_url, content, video_options, output_dir):
     final_video = looped_video_clip.set_audio(audio)
 
     # Trim the video to match the audio duration
+<<<<<<< HEAD
     final_video = final_video.set_duration(audio.duration)
     # Cut the last 1/20th of a second to avoid audio artifacts
     final_video = final_video.subclip(0, final_video.duration - 0.05)
@@ -47,6 +48,21 @@ def create_segment(audio_path, video_url, content, video_options, output_dir):
     if video_options["captions"]:
         final_video = add_captions(final_video, content)
 
+=======
+    final_video = looped_video_clip_with_audio.set_duration(audio.duration)
+
+    if video_options["watermark_url"]:
+        final_video = add_watermark(final_video, video_options["watermark_url"])
+    if video_options["captions"]:
+        final_video = add_captions(final_video, content)
+
+    final_video = final_video.resize((1920, 1080))
+    final_video = final_video.set_fps(24)
+
+    # Cut the last 1/20th of a second to avoid audio artifacts
+    final_video = final_video.subclip(0, final_video.duration - 0.05)
+
+>>>>>>> 9c69eefa574544419d188f5030554cb7a1a6af88
     output_path_processed = output_path.replace(".mp4", "_processed.mp4")
     final_video.write_videofile(output_path_processed, codec="libx264", audio_codec="aac")
     return output_path_processed

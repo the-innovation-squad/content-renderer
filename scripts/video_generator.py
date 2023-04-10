@@ -34,7 +34,7 @@ def generate():
     with open("input/settings.yml", "r") as file:
         settings = yaml.safe_load(file)
 
-    # Iterative approach since thread pool executor is saving audio with errors
+    # Iterative approach since thread pool executor is saving audio to clips with errors
     for index, item in enumerate(script["timeline"]):
         print(f"> Processing scene {index + 1} of {len(script['timeline'])}...")
         process_scene(index, item, settings)
