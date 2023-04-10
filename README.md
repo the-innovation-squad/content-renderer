@@ -29,7 +29,7 @@ timeline:
 ```
 
 ## 🖨️ Example Output
-https://user-images.githubusercontent.com/2746248/230905067-5548e1e3-aac4-45b2-a281-4a6aee9d0458.mp4
+https://user-images.githubusercontent.com/2746248/231005250-db406585-c417-4475-b47e-e7cfcc2314a1.mp4
 
 ## ⚙️ Setup and Installation
 
