@@ -5,14 +5,18 @@ This tool is designed for rendering videos with a given script and corresponding
 The project uses the Eleven Labs API to generate the voice narration and MoviePy for video editing.
 
 ## 📜 Example Input
-Here is a simple example script that can be passed as an input to the app:
+Takes a file `input/settings.yml` in the following format:
 ```yaml
-title: Simple Video Example
 watermark: "https://i.imgur.com/NbzMg2q.png" # optional, default False
+resolution: "720, 1080" # optional, default "1920, 1080"
 engine: "eleven" # one of ["eleven", "google"], default "google"
 engine_settings: # optional per engine settings, check the code in scripts/tts_engines/... for specifics & defaults
   voice_id: "ErXwobaYiN019PkySvjV"
 captions: True # optional, default False
+```
+
+And a script `input/script.yml` like the following:
+```yaml
 timeline:
   - content: "Welcome to our video! This is the first scene with an AI-generated voice."
     clip: "https://www.pexels.com/download/video/6394054/"
