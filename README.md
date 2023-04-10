@@ -26,7 +26,7 @@ timeline:
 ```
 
 ## 🖨️ Example Output
-https://user-images.githubusercontent.com/2746248/230598446-d7470b44-a7a5-4cac-b885-b1a41f5ef272.mp4
+https://user-images.githubusercontent.com/2746248/230905067-5548e1e3-aac4-45b2-a281-4a6aee9d0458.mp4
 
 ## ⚙️ Setup and Installation
 
