@@ -6,7 +6,6 @@ from video_tools.captions import add_captions
 
 def download_video(video_url, ouput_path):
     response = requests.get(video_url, stream=True)
-    # Ensure the request is successful before proceeding
     if response.status_code == 200:
         with open(ouput_path, "wb") as file:
             for chunk in response.iter_content(chunk_size=8192):
@@ -37,7 +36,6 @@ def create_segment(audio_path, video_url, content, video_options, output_dir):
     # Trim the video to match the audio duration
     final_video = looped_video_clip_with_audio.set_duration(audio.duration)
 
-    # Add optional extras
     if video_options["watermark_url"]:
         print("> Adding watermark...")
         final_video = add_watermark(final_video, video_options["watermark_url"])
@@ -45,14 +43,12 @@ def create_segment(audio_path, video_url, content, video_options, output_dir):
         print("> Adding captions...")
         final_video = add_captions(final_video, content)
 
-    # Set the target resolution and frame rate
     final_video = final_video.resize((1920, 1080))
     final_video = final_video.set_fps(30)
 
     # Cut the last 1/20th of a second to avoid audio artifacts
     final_video = final_video.subclip(0, final_video.duration - 0.05)
 
-    # Write the final video to disk and return the path
     output_path_processed = output_path.replace(".mp4", "_processed.mp4")
     print("> Writing video to disk...")
     final_video.write_videofile(output_path_processed, codec="libx264", audio_codec="aac")
