@@ -4,7 +4,7 @@ from video import create_segment, concatenate_segments
 from narration import create_narration
 
 def generate():
-    # Read the YAML file
+    print("> Reading input files...")
     with open("input/video_script.yml", "r") as file:
         video_script = yaml.safe_load(file)
 
@@ -12,6 +12,7 @@ def generate():
 
     # Iterate through the timeline of content items and stock video clips to create video segments
     for index, item in enumerate(video_script["timeline"]):
+        print(f"> Processing scene {index + 1} of {len(video_script['timeline'])}...")
         content = item["content"]
         clip_url = item["clip"]
 
@@ -26,7 +27,9 @@ def generate():
         output_dir = "output/" + str(index)
         os.mkdir(output_dir)
 
+        print("> Creating narration...")
         audio_file_path = create_narration(content, narration_options, output_dir)
+        print("> Compiling video segment...")
         create_segment(audio_file_path, clip_url, content, video_options, output_dir)
 
     # Stitch the video segments together
