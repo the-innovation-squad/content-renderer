@@ -70,14 +70,6 @@ https://user-images.githubusercontent.com/2746248/230905067-5548e1e3-aac4-45b2-a
 |-------|-----------|--------------------------------------------|----------------|
 | `-d`  | `--debug` | Enable debug mode, and skip tts generation | Flag (boolean) |
 
-### Usage
-
-To run the script with command-line arguments, use the following format:
-
-```bash
-python scripts/main.py [-d]
-```
-
 ## 📖 How the App Works
 The app works in the following steps:
 
