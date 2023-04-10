@@ -49,6 +49,9 @@ def create_segment(audio_path, video_url, content, video_options, output_dir):
     final_video = final_video.resize((1920, 1080))
     final_video = final_video.set_fps(30)
 
+    # Cut the last 1/20th of a second to avoid audio artifacts
+    final_video = final_video.subclip(0, final_video.duration - 0.05)
+
     # Write the final video to disk and return the path
     output_path_processed = output_path.replace(".mp4", "_processed.mp4")
     print("> Writing video to disk...")
