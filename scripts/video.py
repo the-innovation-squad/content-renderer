@@ -44,7 +44,7 @@ def create_segment(audio_path, video_url, content, video_options, output_dir):
         final_video = add_captions(final_video, content)
 
     final_video = final_video.resize((1920, 1080))
-    final_video = final_video.set_fps(30)
+    final_video = final_video.set_fps(24)
 
     # Cut the last 1/20th of a second to avoid audio artifacts
     final_video = final_video.subclip(0, final_video.duration - 0.05)
