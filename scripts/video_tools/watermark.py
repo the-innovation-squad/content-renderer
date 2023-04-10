@@ -23,8 +23,11 @@ def add_watermark(input_video, watermark_url):
     return video_with_watermark
 
 def download_img(url):
-    response = requests.get(url)
+    filename = "output/watermark.png"
+    if os.path.exists(filename):
+        return filename
 
+    response = requests.get(url)
     if response.status_code == 200:
         filename = "output/watermark.png"
         with open(filename, "wb") as file:
