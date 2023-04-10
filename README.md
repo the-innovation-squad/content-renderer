@@ -4,7 +4,7 @@ This tool is designed for rendering videos with a given script and corresponding
 
 The project uses the Eleven Labs API to generate the voice narration and MoviePy for video editing.
 
-## 📜 Example Script
+## 📜 Example Input
 Here is a simple example script that can be passed as an input to the app:
 ```yaml
 title: Simple Video Example
@@ -24,8 +24,9 @@ timeline:
   - content: "That's it for our video. Thanks for watching and stay tuned for more content!"
     clip: "https://www.pexels.com/download/video/3150358/?fps=25.0&h=1080&w=2048"
 ```
-https://user-images.githubusercontent.com/2746248/230598446-d7470b44-a7a5-4cac-b885-b1a41f5ef272.mp4
 
+## 🖨️ Example Output
+https://user-images.githubusercontent.com/2746248/230598446-d7470b44-a7a5-4cac-b885-b1a41f5ef272.mp4
 
 ## ⚙️ Setup and Installation
 
