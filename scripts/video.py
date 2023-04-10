@@ -1,5 +1,6 @@
-from moviepy.editor import VideoFileClip, AudioFileClip, concatenate_videoclips
 import requests
+import subprocess
+from moviepy.editor import VideoFileClip, AudioFileClip, concatenate_videoclips
 from video_tools.watermark import add_watermark
 from video_tools.captions import add_captions
 
@@ -44,21 +45,30 @@ def create_segment(audio_path, video_url, content, video_options, output_dir):
         print("> Adding captions...")
         final_video = add_captions(final_video, content)
 
+    # Set the target resolution and frame rate
+    final_video = final_video.resize((1920, 1080))
+    final_video = final_video.set_fps(30)
+
     # Write the final video to disk and return the path
     output_path_processed = output_path.replace(".mp4", "_processed.mp4")
     print("> Writing video to disk...")
     final_video.write_videofile(output_path_processed, codec="libx264", audio_codec="aac")
     return output_path_processed
 
-def preprocess_video_clip(video_path, target_resolution, target_fps):
-    clip = VideoFileClip(video_path)
-    resized_clip = clip.resize(target_resolution).set_fps(target_fps)
-    return resized_clip
-
 def concatenate_segments(segment_paths, output_path):
-    target_resolution = (1920, 1080) # Adjust this to your desired resolution
-    target_fps = 30 # Adjust this to your desired frame rate
-
-    processed_clips = [preprocess_video_clip(clip_path, target_resolution, target_fps) for clip_path in segment_paths]
-    final_clip = concatenate_videoclips(processed_clips)
-    final_clip.write_videofile(output_path, codec="libx264", audio_codec="aac")
+    # Here we use ffmpeg command line directly, because moviepy's concatenate_videoclips method creates audio artifacts when combining clips
+    relative_segment_paths = [path.replace("output/", "") for path in segment_paths]
+    with open('output/clip_paths.txt', 'w') as file:
+        for path in relative_segment_paths:
+            file.write(f"file {path}\n")
+    ffmpeg_command = [
+        "ffmpeg",
+        "-f", "concat",
+        "-safe", "0",
+        "-i", "output/clip_paths.txt",
+        "-c", "copy",
+        output_path
+    ]
+    result = subprocess.run(ffmpeg_command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+    if result.returncode != 0:
+        raise Exception(f"Video concatenation failed. Error: {result.stderr}")

@@ -32,6 +32,7 @@ def generate():
         print("> Compiling video segment...")
         create_segment(audio_file_path, clip_url, content, video_options, output_dir)
 
-    # Stitch the video segments together
+    print("> Concatenating video segments...")
     segment_paths = [os.path.join("output", str(index), "video_processed.mp4") for index, item in enumerate(video_script["timeline"])]
     concatenate_segments(segment_paths, "output/final.mp4")
+    print("> Done")
