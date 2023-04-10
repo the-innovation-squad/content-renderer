@@ -8,11 +8,11 @@ The project uses the Eleven Labs API to generate the voice narration and MoviePy
 Takes a file `input/settings.yml` in the following format:
 ```yaml
 watermark: "https://i.imgur.com/NbzMg2q.png" # optional, default False
+captions: True # optional, default False
 resolution: "720, 1080" # optional, default "1920, 1080"
 engine: "eleven" # one of ["eleven", "google"], default "google"
 engine_settings: # optional per engine settings, check the code in scripts/tts_engines/... for specifics & defaults
   voice_id: "ErXwobaYiN019PkySvjV"
-captions: True # optional, default False
 ```
 
 And a script `input/script.yml` like the following:
