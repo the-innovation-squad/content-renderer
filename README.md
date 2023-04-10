@@ -8,16 +8,18 @@ The project uses the Eleven Labs API to generate the voice narration and MoviePy
 Here is a simple example script that can be passed as an input to the app:
 ```yaml
 title: Simple Video Example
-watermark: "https://i.imgur.com/NbzMg2q.png" # Optional
-engine: "eleven" # One of ["eleven", "google"]. Default is "google"
+watermark: "https://i.imgur.com/NbzMg2q.png" # optional, default False
+engine: "eleven" # one of ["eleven", "google"], default "google"
 engine_settings: # optional per engine settings, check the code in scripts/tts_engines/... for specifics & defaults
   voice_id: "ErXwobaYiN019PkySvjV"
-captions: True # Optional
+captions: True # optional, default False
 timeline:
   - content: "Welcome to our video! This is the first scene with an AI-generated voice."
     clip: "https://www.pexels.com/download/video/6394054/"
   - content: "Now, we're moving to the second scene. Enjoy the visuals!"
     engine: "google" # global engine can be overridden for individual timeline items
+    engine_settings: # as above, per engine settings can be overridden for individual timeline items
+      ssml_gender: "MALE"
     clip: "https://www.pexels.com/download/video/2034291/"
   - content: "That's it for our video. Thanks for watching and stay tuned for more content!"
     clip: "https://www.pexels.com/download/video/3150358/?fps=25.0&h=1080&w=2048"
