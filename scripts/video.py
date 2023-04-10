@@ -3,6 +3,7 @@ import subprocess
 from moviepy.editor import VideoFileClip, AudioFileClip, concatenate_videoclips
 from video_tools.watermark import add_watermark
 from video_tools.captions import add_captions
+from video_tools.orientation import set_orientation
 
 def download_video(video_url, ouput_path):
     response = requests.get(video_url, stream=True)
@@ -38,6 +39,10 @@ def create_segment(audio_path, video_url, content, video_options, output_dir):
     final_video = looped_video_clip_with_audio.set_duration(audio.duration)
 
     # Add optional extras
+
+    if video_options["is_vertical"]:
+        print("> Vericalizing...")
+        final_video = set_orientation(final_video)
     if video_options["watermark_url"]:
         print("> Adding watermark...")
         final_video = add_watermark(final_video, video_options["watermark_url"])
@@ -46,7 +51,8 @@ def create_segment(audio_path, video_url, content, video_options, output_dir):
         final_video = add_captions(final_video, content)
 
     # Set the target resolution and frame rate
-    final_video = final_video.resize((1920, 1080))
+    if not video_options["is_vertical"]:
+        final_video = final_video.resize((1920, 1080))
     final_video = final_video.set_fps(30)
 
     # Cut the last 1/20th of a second to avoid audio artifacts
@@ -55,7 +61,7 @@ def create_segment(audio_path, video_url, content, video_options, output_dir):
     # Write the final video to disk and return the path
     output_path_processed = output_path.replace(".mp4", "_processed.mp4")
     print("> Writing video to disk...")
-    final_video.write_videofile(output_path_processed, codec="libx264", audio_codec="aac")
+    final_video.write_videofile(output_path_processed, codec="libx264", audio_codec="aac", threads=16)
     return output_path_processed
 
 def concatenate_segments(segment_paths, output_path):

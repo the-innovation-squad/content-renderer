@@ -23,7 +23,8 @@ def generate():
         }
         video_options = {
             "captions": video_script.get("captions", False),
-            "watermark_url": video_script.get("watermark", False)
+            "watermark_url": video_script.get("watermark", False),
+            "is_vertical": video_script.get("vertical", False)
         }
 
         output_dir = "output/" + str(index)
