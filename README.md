@@ -10,6 +10,8 @@ Here is a simple example script that can be passed as an input to the app:
 title: Simple Video Example
 watermark: "https://i.imgur.com/NbzMg2q.png" # Optional
 engine: "eleven" # One of ["eleven", "google"]. Default is "google"
+engine_settings: # optional per engine settings, check the code in scripts/tts_engines/... for specifics & defaults
+  voice_id: "ErXwobaYiN019PkySvjV"
 captions: True # Optional
 timeline:
   - content: "Welcome to our video! This is the first scene with an AI-generated voice."

@@ -9,6 +9,7 @@ def generate():
         video_script = yaml.safe_load(file)
 
     global_engine = video_script.get("engine", "google")
+    global_engine_settings = video_script.get("engine_settings", {})
 
     # Iterate through the timeline of content items and stock video clips to create video segments
     for index, item in enumerate(video_script["timeline"]):
@@ -18,6 +19,7 @@ def generate():
 
         narration_options = {
             "engine": item.get("engine", global_engine),
+            "engine_settings": item.get("engine_settings", global_engine_settings)
         }
         video_options = {
             "captions": video_script.get("captions", False),
