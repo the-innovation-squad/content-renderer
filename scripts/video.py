@@ -38,12 +38,15 @@ def create_segment(audio_path, video_url, content, video_options, output_dir):
 
     # Add optional extras
     if video_options["watermark_url"]:
+        print("> Adding watermark...")
         final_video = add_watermark(final_video, video_options["watermark_url"])
     if video_options["captions"]:
+        print("> Adding captions...")
         final_video = add_captions(final_video, content)
 
     # Write the final video to disk and return the path
     output_path_processed = output_path.replace(".mp4", "_processed.mp4")
+    print("> Writing video to disk...")
     final_video.write_videofile(output_path_processed, codec="libx264", audio_codec="aac")
     return output_path_processed
 
