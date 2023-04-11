@@ -11,8 +11,7 @@ def narrate(input_script, output_dir, settings):
     }
     tts_url = f"https://api.elevenlabs.io/v1/text-to-speech/{voice_id}"
 
-    # TODO: fix issue where we seem to need to clip off script at 333 characters
-    formatted_message = {"text": input_script[:333]}
+    formatted_message = {"text": input_script}
     response = requests.post(
         tts_url, headers=tts_headers, json=formatted_message
     )
