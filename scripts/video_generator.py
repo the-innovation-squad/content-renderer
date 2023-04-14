@@ -2,7 +2,7 @@ import os
 import yaml
 from video import create_segment, concatenate_segments
 from narration import create_narration
-from concurrent.futures import ThreadPoolExecutor
+# from concurrent.futures import ThreadPoolExecutor # see below for why this is commented out
 
 def process_scene(index, timeline_entry, settings):
     content = timeline_entry["content"]
