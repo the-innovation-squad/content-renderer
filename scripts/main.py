@@ -19,7 +19,7 @@ def clear_ouput_directory():
             elif os.path.isdir(item_path):
                 shutil.rmtree(item_path)
 
-def set_args():
+def configure_args():
     parser = argparse.ArgumentParser(description="Generate a video from a script.")
     parser.add_argument("-d", "--debug", action="store_true", help="Enable debug mode")
     args = parser.parse_args()
@@ -28,7 +28,7 @@ def set_args():
         print(f"Debug mode: {config['debug']}")
 
 def main():
-    set_args()
+    configure_args()
     clear_ouput_directory()
     generate()
 
