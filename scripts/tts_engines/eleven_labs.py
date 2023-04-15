@@ -1,13 +1,12 @@
 import requests
-from config import Config
-cfg = Config()
+from config import config
 
 def narrate(input_script, output_dir, settings):
     voice_id = settings.get("voice_id", "TxGEqnHWrfWFTfGW9XjX")
 
     tts_headers = {
         "Content-Type": "application/json",
-        "xi-api-key": cfg.elevenlabs_api_key
+        "xi-api-key": config["ELEVENLABS_API_KEY"]
     }
     tts_url = f"https://api.elevenlabs.io/v1/text-to-speech/{voice_id}"
 

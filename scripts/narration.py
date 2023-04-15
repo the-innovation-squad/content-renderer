@@ -1,12 +1,11 @@
 from tts_engines.google_tts import narrate as narrate_google
 from tts_engines.eleven_labs import narrate as narrate_eleven
 import shutil
-from config import Config
-cfg = Config()
+from config import config
 
 def create_narration(input_script, options, output_dir):
 
-    if cfg.debug:
+    if config["debug"]:
         output_path = output_dir + "/narration.mpeg"
         shutil.copy("lib/voice-sample.mpeg", output_path)
 
