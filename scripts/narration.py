@@ -8,6 +8,7 @@ def create_narration(input_script, options, output_dir):
     if config["debug"]:
         output_path = output_dir + "/narration.mpeg"
         shutil.copy("lib/voice-sample.mpeg", output_path)
+        return output_path
 
     engine = options["engine"]
     settings = options["engine_settings"]
